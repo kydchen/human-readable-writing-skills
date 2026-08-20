@@ -2,3 +2,5 @@ interface:
   display_name: "Chinese prose editor"
   short_description: "Edit Chinese prose without flattening the author's voice"
   default_prompt: "Use $chinese-prose-editor to revise this Chinese draft while preserving its facts, judgment, and technical terms."
+policy:
+  allow_implicit_invocation: false

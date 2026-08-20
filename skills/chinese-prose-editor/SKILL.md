@@ -1,7 +1,8 @@
 ---
 name: "chinese-prose-editor"
-description: "Edit Chinese AI and technical prose into direct public writing while preserving facts, judgment, uncertainty, technical terms, and lived experience. Use for Chinese posts, essays, product notes, model reviews, and drafts that sound formulaic or lecture-like. For English, use humanizer."
+description: "Edit Chinese AI and technical prose into direct public writing while preserving facts, judgment, uncertainty, technical terms, and lived experience. Use for Chinese posts, essays, product notes, model reviews, and drafts that sound formulaic or lecture-like. For English, use english-prose-editor."
 license: "CC-BY-NC-4.0"
+disable-model-invocation: true
 ---
 
 # Chinese prose editor
@@ -12,7 +13,7 @@ Turn Chinese AI/tech writing into a direct public draft that preserves the autho
 
 ## Language Scope
 
-Use this skill for Chinese text. For English text, use `humanizer` instead unless the user explicitly asks for a cross-language rewrite.
+Use this skill for Chinese text. For English text, use `english-prose-editor` instead unless the user explicitly asks for a cross-language rewrite.
 
 Default output is the revised text only. Add diagnosis only when the user asks why a sentence feels AI-like.
 

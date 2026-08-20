@@ -13,9 +13,9 @@
 | 对话 | [`wait-what`](skills/wait-what/) | AI 上一条回复没讲明白 | 补回必要背景，用共同术语重新解释上一条回复 |
 | 全文结构 | [`reader-first-writing`](skills/reader-first-writing/) | 手上是笔记、长文草稿，或者文章的阅读路径不清楚 | 调整主张、概念、证据、章节与写作节拍的顺序 |
 | 中文表达 | [`chinese-prose-editor`](skills/chinese-prose-editor/) | 结构已经稳定，但中文仍公式化、像在讲课 | 修改措辞与段内衔接，同时保留原来的判断 |
-| 英文表达 | [`humanizer`](skills/humanizer/) | 结构已经稳定，但英文仍有常见 AI 写作痕迹 | 修改措辞、节奏、声音与段内衔接 |
+| 英文表达 | [`english-prose-editor`](skills/english-prose-editor/) | 结构已经稳定，但英文仍有常见 AI 写作痕迹 | 修改措辞、节奏、声音与段内衔接 |
 
-`reader-first-writing` 融合了 `writing-shape` 和 `writing-beats` 的结构方法。它既能把原始材料组织成长文，也能审计一篇完整草稿。结构确认以后，它会把文档标记为 `STRUCTURE FROZEN`，再交给对应语言的编辑技能。
+`reader-first-writing` 融合了 `writing-shape` 和 `writing-beats` 的结构方法。它既能把原始材料组织成长文，也能审计一篇完整草稿。结构确认以后，它会把文档标记为 `STRUCTURE FROZEN`，再告诉用户下一步该调用哪个语言编辑技能。
 
 ## 推荐流程
 
@@ -27,9 +27,11 @@ reader-first-writing
        |
  STRUCTURE FROZEN
        |
+    用户调用
+       |
        +--> 中文 --> chinese-prose-editor
        |
-       +--> 英文 --> humanizer
+       +--> 英文 --> english-prose-editor
 
 对话没听懂 --> wait-what
 ```
@@ -37,6 +39,8 @@ reader-first-writing
 只要文章还需要调整观点和证据的顺序，就先走完整流程。短文如果论点和顺序已经清楚，可以直接使用对应语言的编辑技能。`wait-what` 负责对话中的即时补救，不是文章生产的必经步骤。
 
 语言编辑可以修改一个结构节拍内部的句子和段落，但不能搬动证据、改变主张、改写不确定性，或者悄悄补上原文没有的材料。句子修改如果暴露出更大的结构问题，就把草稿退回 `reader-first-writing`。
+
+仓库名本身不是一个可以调用的技能。两个语言编辑器都只能由用户明确调用，模型不会自动选择。在 Claude Code 中使用 `/english-prose-editor` 或 `/chinese-prose-editor`，在 Codex 中使用 `$english-prose-editor` 或 `$chinese-prose-editor`。
 
 ## 使用示例
 
@@ -62,9 +66,18 @@ $reader-first-writing 把这些访谈笔记组织成一篇文章。读者了解�
 
 ### 做语言编辑
 
+Claude Code：
+
 ```text
 /chinese-prose-editor 保留已经冻结的章节顺序，修改中文表达。
-/humanizer Keep the frozen section order and revise the English prose.
+/english-prose-editor Keep the frozen section order and revise the English prose.
+```
+
+Codex：
+
+```text
+$chinese-prose-editor 保留已经冻结的章节顺序，修改中文表达。
+$english-prose-editor Keep the frozen section order and revise the English prose.
 ```
 
 ### 修复一次没讲明白的对话
@@ -95,7 +108,7 @@ cp -R human-readable-writing-skills/skills/* ~/.claude/skills/
 
 - `reader-first-writing` 融合了 Matt Pocock 的 [`writing-shape`](https://github.com/mattpocock/skills/tree/main/skills/in-progress/writing-shape) 和 [`writing-beats`](https://github.com/mattpocock/skills/tree/main/skills/in-progress/writing-beats)，并加入结构审计、结构冻结和语言交接。
 - `chinese-prose-editor` 是我们对外使用的名字，源自 Pluviobyte 的 [`ra-人话`](https://github.com/Pluviobyte/rnskill/tree/main/skills/ra-%E4%BA%BA%E8%AF%9D)。我们只做了少量必要修改。
-- `humanizer` 融合了 [`blader/humanizer`](https://github.com/blader/humanizer) 与 [`hardikpandya/stop-slop`](https://github.com/hardikpandya/stop-slop)，并加入语言分流、声音校准、误判提示和“草稿、审计、定稿”循环。
+- `english-prose-editor` 融合了 [`blader/humanizer`](https://github.com/blader/humanizer) 与 [`hardikpandya/stop-slop`](https://github.com/hardikpandya/stop-slop)，并加入语言分流、声音校准、误判提示和“草稿、审计、定稿”循环。
 - `wait-what` 修改自 Matt Pocock 的 [`wait-what`](https://github.com/mattpocock/skills/blob/main/skills/productivity/wait-what/SKILL.md)。
 
 每项修改和本次比对使用的上游版本都记录在 [`docs/UPSTREAM_CHANGES.md`](docs/UPSTREAM_CHANGES.md)。

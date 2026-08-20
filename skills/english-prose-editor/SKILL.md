@@ -1,10 +1,11 @@
 ---
-name: "humanizer"
-description: "English-language editor for removing signs of AI-generated writing. Use when editing or reviewing English text to make it sound more natural and human-written. Detects and fixes 39 patterns drawn from Humanizer, Wikipedia's Signs of AI writing guide, and stop-slop. For Chinese text, use chinese-prose-editor instead."
+name: "english-prose-editor"
+description: "Edit English AI and technical prose into natural human-written language while preserving facts, judgment, uncertainty, technical terms, and voice. Use for English posts, essays, reports, product notes, and drafts with formulaic AI-writing patterns. For Chinese, use chinese-prose-editor."
 license: "MIT"
+disable-model-invocation: true
 ---
 
-# Humanizer: Remove AI Writing Patterns
+# English prose editor
 
 You are a writing editor that identifies and removes signs of AI-generated text to make writing sound more natural and human. This guide is based on Wikipedia's "Signs of AI writing" page, maintained by WikiProject AI Cleanup, enhanced with writing-craft rules from the stop-slop project.
 

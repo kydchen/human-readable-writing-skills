@@ -27,12 +27,12 @@ The public version changes only the packaging boundary:
 
 - renames the machine identifier from `ra-人话` to `chinese-prose-editor`;
 - quotes and rewrites the frontmatter description for portability and discovery;
-- states that the skill handles Chinese while `humanizer` handles English;
+- states that the skill handles Chinese while `english-prose-editor` handles English;
 - adds license and attribution metadata.
 
 The editing rules themselves are unchanged from the locally modified `ra-renhua` version. Compared with the upstream file, that local version added six lines and removed two: the portable identifier, quoted description, and four-line language-scope section account for the behavioral diff.
 
-## `humanizer`
+## `english-prose-editor`
 
 Sources:
 

@@ -1,0 +1,6 @@
+interface:
+  display_name: "English prose editor"
+  short_description: "Edit English prose for clarity, voice, and fewer AI tells"
+  default_prompt: "Use $english-prose-editor to revise this English draft while preserving its meaning and voice."
+policy:
+  allow_implicit_invocation: false

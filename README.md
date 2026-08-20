@@ -13,9 +13,9 @@ Hard-to-read writing does not have one cause. A reply may be missing context. A 
 | Conversation | [`wait-what`](skills/wait-what/) | The last AI reply did not land | Re-pitches that reply with context and shared terminology |
 | Document structure | [`reader-first-writing`](skills/reader-first-writing/) | You have notes, a long draft, or a document with a weak reader journey | Reorders claims, concepts, evidence, sections, and beats |
 | Chinese prose | [`chinese-prose-editor`](skills/chinese-prose-editor/) | The structure is stable, but the Chinese sounds formulaic or lecture-like | Revises wording and local paragraph flow while preserving the argument |
-| English prose | [`humanizer`](skills/humanizer/) | The structure is stable, but the English carries common AI-writing patterns | Revises wording, rhythm, voice, and local paragraph flow |
+| English prose | [`english-prose-editor`](skills/english-prose-editor/) | The structure is stable, but the English carries common AI-writing patterns | Revises wording, rhythm, voice, and local paragraph flow |
 
-`reader-first-writing` combines the structural ideas in `writing-shape` and `writing-beats`. It can shape raw material or audit a complete draft. Once the structure is approved, it marks the document `STRUCTURE FROZEN` and hands it to the matching language editor.
+`reader-first-writing` combines the structural ideas in `writing-shape` and `writing-beats`. It can shape raw material or audit a complete draft. Once the structure is approved, it marks the document `STRUCTURE FROZEN` and tells the user which language editor to invoke next.
 
 ## Recommended workflow
 
@@ -27,9 +27,11 @@ reader-first-writing
         |
   STRUCTURE FROZEN
         |
+   user invokes
+        |
         +--> Chinese --> chinese-prose-editor
         |
-        +--> English --> humanizer
+        +--> English --> english-prose-editor
 
 Unclear AI reply --> wait-what
 ```
@@ -37,6 +39,8 @@ Unclear AI reply --> wait-what
 Use the full document flow when the order of ideas still needs work. If a short draft already has a clear argument and sequence, go straight to the matching language editor. Use `wait-what` during conversation; it is not a required stage in article production.
 
 The language pass may edit sentences and paragraphs inside a structural beat. It should not move evidence, change claims, alter uncertainty, or silently repair a structural gap. If sentence editing exposes a larger problem, return the draft to `reader-first-writing`.
+
+The repository name is not an invocable skill. Both language editors are explicit-only: the model does not select them automatically. Start the language pass with `/english-prose-editor` or `/chinese-prose-editor` in Claude Code and `$english-prose-editor` or `$chinese-prose-editor` in Codex.
 
 ## Examples
 
@@ -62,9 +66,18 @@ Use reader-first-writing in audit mode. Show me the structural ledger and revise
 
 ### Run the language pass
 
+Claude Code:
+
 ```text
 /chinese-prose-editor Keep the frozen section order and revise the Chinese prose.
-/humanizer Keep the frozen section order and revise the English prose.
+/english-prose-editor Keep the frozen section order and revise the English prose.
+```
+
+Codex:
+
+```text
+$chinese-prose-editor Keep the frozen section order and revise the Chinese prose.
+$english-prose-editor Keep the frozen section order and revise the English prose.
 ```
 
 ### Repair a conversation
@@ -95,7 +108,7 @@ The skills use portable `SKILL.md` files. The optional `agents/openai.yaml` file
 
 - `reader-first-writing` merges Matt Pocock's [`writing-shape`](https://github.com/mattpocock/skills/tree/main/skills/in-progress/writing-shape) and [`writing-beats`](https://github.com/mattpocock/skills/tree/main/skills/in-progress/writing-beats), then adds audit mode, a structure freeze, and language handoff.
 - `chinese-prose-editor` is the public name of our lightly modified fork of Pluviobyte's [`ra-人话`](https://github.com/Pluviobyte/rnskill/tree/main/skills/ra-%E4%BA%BA%E8%AF%9D). The content changes are deliberately small.
-- `humanizer` combines ideas and rules from [`blader/humanizer`](https://github.com/blader/humanizer) and [`hardikpandya/stop-slop`](https://github.com/hardikpandya/stop-slop), with language routing, voice calibration, false-positive guidance, and a draft-audit-final loop.
+- `english-prose-editor` combines ideas and rules from [`blader/humanizer`](https://github.com/blader/humanizer) and [`hardikpandya/stop-slop`](https://github.com/hardikpandya/stop-slop), with language routing, voice calibration, false-positive guidance, and a draft-audit-final loop.
 - `wait-what` is a small modification of Matt Pocock's [`wait-what`](https://github.com/mattpocock/skills/blob/main/skills/productivity/wait-what/SKILL.md).
 
 See [`docs/UPSTREAM_CHANGES.md`](docs/UPSTREAM_CHANGES.md) for the exact differences and source snapshots.

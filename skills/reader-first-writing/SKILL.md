@@ -90,11 +90,13 @@ alter numbers, quotations, citations, or technical terms; or move material acros
 If a language edit exposes a structural problem, report it and return the document for structural review.
 ```
 
-Then route the language pass:
+Then tell the user which language pass to invoke:
 
 - Chinese prose: `chinese-prose-editor`.
-- English prose: `humanizer`.
+- English prose: `english-prose-editor`.
 - Mixed-language documents: apply each skill only to its matching passages.
+
+Do not invoke a language editor automatically. The user starts that pass explicitly after accepting the structure freeze.
 
 ## Out of scope
 

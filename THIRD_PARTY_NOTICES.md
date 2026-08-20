@@ -15,7 +15,7 @@ This repository contains adaptations and a synthesis of the following projects.
 - Source: https://github.com/blader/humanizer
 - Copyright: 2025 Siqi Chen
 - License: MIT
-- Used in: `skills/humanizer/`
+- Used in: `skills/english-prose-editor/`
 - Changes: combined with stop-slop guidance and extended with language routing, voice calibration, false-positive guidance, and a revision loop.
 
 ## Hardik Pandya `stop-slop`
@@ -23,7 +23,7 @@ This repository contains adaptations and a synthesis of the following projects.
 - Source: https://github.com/hardikpandya/stop-slop
 - Copyright: 2025 Hardik Pandya
 - License: MIT
-- Used in: `skills/humanizer/`
+- Used in: `skills/english-prose-editor/`
 - Changes: selected craft patterns and the scoring approach were incorporated into the Humanizer workflow.
 
 ## Matt Pocock `skills`

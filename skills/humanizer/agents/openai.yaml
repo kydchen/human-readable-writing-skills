@@ -1,4 +1,0 @@
-interface:
-  display_name: "Humanizer"
-  short_description: "Edit English prose for clarity, voice, and fewer AI tells"
-  default_prompt: "Use $humanizer to revise this English draft while preserving its meaning and voice."

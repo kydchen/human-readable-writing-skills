@@ -1,0 +1,8 @@
+# License scope
+
+This repository uses two licenses.
+
+1. `skills/chinese-prose-editor/`, including its `SKILL.md` and metadata, is licensed under the Creative Commons Attribution-NonCommercial 4.0 International license. See `LICENSES/CC-BY-NC-4.0.txt`.
+2. All other original and adapted material in this repository is licensed under the MIT License. See `LICENSES/MIT.txt`.
+
+Third-party copyrights and attribution are listed in `THIRD_PARTY_NOTICES.md`. When a third-party notice or source license imposes additional conditions on material derived from that source, those conditions continue to apply.

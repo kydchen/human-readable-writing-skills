@@ -1,0 +1,6 @@
+interface:
+  display_name: "Reader-first writing"
+  short_description: "Shape or audit long-form writing for reader flow"
+  default_prompt: "Use $reader-first-writing to shape or audit this draft for a clear reader journey."
+policy:
+  allow_implicit_invocation: false

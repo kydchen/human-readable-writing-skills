@@ -42,12 +42,14 @@ Each beat has:
 - **grounds:** concepts or claims introduced here;
 - **material:** the source facts, evidence, examples, or quotations it uses.
 
-A beat may be one sentence or several paragraphs. Split it when it performs more than one rhetorical job. A block may use prose, a list, a table, a quotation, or a code block; choose the format that serves the job.
+A beat may be one sentence or several paragraphs. Split it when it performs more than one rhetorical job. A new job usually deserves a visible paragraph or beat boundary; do not split solely to make the page look less dense. A block may use prose, a list, a table, a quotation, or a code block; choose the format that serves the job.
 
 ### Source and file discipline
 
 - Read all supplied material before shaping or auditing.
 - Treat source material as a quarry, not as a sequence that must be preserved.
+- When synthesizing several sources, organize around the governing question, claim, or comparison axis rather than walking through one source at a time.
+- Preserve quotation status. Keep direct quotations marked and exact; express paraphrases in genuinely new wording without importing distinctive source language into unmarked prose.
 - Keep the source file read-only unless the user explicitly asks for in-place editing.
 - When writing to a file, re-read the current file before every edit and preserve user changes.
 - Write to a separate output file when the user has not authorized replacing the source.
@@ -73,7 +75,7 @@ Read the full draft before commenting. Return the structural judgment before lin
    - Does every section advance the same governing claim or question?
    - Does each concept appear before another block relies on it?
    - Are claims paired with the evidence they need?
-   - Are any blocks repetitive, premature, orphaned, or overloaded?
+   - Are any blocks repetitive, premature, orphaned, overloaded, or dense enough to hide several rhetorical jobs?
    - Does the ending resolve the opening without introducing a new argument?
 4. Propose a revised beat map and a concise change list. Show moves, merges, cuts, splits, and missing bridges explicitly.
 5. Do not rewrite the full document before the user approves the structural plan, unless the user requested an autonomous rewrite. In an autonomous pass, present the plan and the rewritten document together so the changes remain auditable.
@@ -115,4 +117,4 @@ Keep diagnostic prose concise. The document is the deliverable.
 
 ## Attribution
 
-This skill adapts the reader-grounding and beat concepts from Matt Pocock's MIT-licensed [`writing-shape`](https://github.com/mattpocock/skills/tree/main/skills/in-progress/writing-shape) and [`writing-beats`](https://github.com/mattpocock/skills/tree/main/skills/in-progress/writing-beats). Audit mode, structure freeze, and the downstream language handoff are local additions.
+This skill adapts the reader-grounding and beat concepts from Matt Pocock's MIT-licensed [`writing-shape`](https://github.com/mattpocock/skills/tree/main/skills/in-progress/writing-shape) and [`writing-beats`](https://github.com/mattpocock/skills/tree/main/skills/in-progress/writing-beats). Audit mode, structure freeze, and the downstream language handoff are local additions. The multi-source synthesis, visible beat-boundary, and quotation-status guidance was informed by Anthropic's [Prompting Claude Fable 5.1](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-1) documentation and generalized beyond that model.

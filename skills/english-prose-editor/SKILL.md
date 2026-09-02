@@ -18,8 +18,8 @@ Use this skill for English text. For Chinese text, use `chinese-prose-editor` in
 When given text to humanize:
 
 1. **Identify AI patterns** - Scan for the patterns listed below.
-2. **Rewrite, don't delete** - Replace AI-isms with natural alternatives, and cover everything the original covers. If the original has five paragraphs, the rewrite has five paragraphs.
-3. **Preserve meaning** - Keep the core message intact.
+2. **Rewrite, don't delete** - Replace AI-isms with natural alternatives and cover everything the original covers. Preserve the source's paragraphing unless a sentence or paragraph hides several distinct jobs; then split or merge only enough to make the passage readable.
+3. **Preserve meaning and evidence boundaries** - Keep the core message, claim strength, uncertainty, technical terms, citations, and distinction between quotation and paraphrase intact. Leave direct quotations unchanged unless the user asks to edit them.
 4. **Match the voice** - Fit the intended tone (formal, casual, technical). Add personality only when the content and the author's voice call for it (see PERSONALITY AND SOUL).
 5. **Do not invent** - Do not add facts, names, dates, citations, examples, or experiences that are absent from the source.
 
@@ -74,6 +74,19 @@ Avoiding AI patterns is only half the job. Sterile, voiceless writing is just as
 
 ### After (has a pulse):
 > I genuinely don't know how to feel about this one. 3 million lines of code, generated while the humans presumably slept. Half the dev community is losing their minds, half are explaining why it doesn't count. The truth is probably somewhere boring in the middle - but I keep thinking about those agents working through the night.
+
+
+## PRECISION OVER PERFORMANCE
+
+Watch for **mannered prose**: language that swaps a literal statement for metaphor, flourish, or a quotable turn mainly to display style. It makes the reader decode the sentence and can introduce implications the source never supported.
+
+Prefer the literal wording when it carries the same meaning more precisely. This is not a blanket ban on figurative language. Keep a metaphor when it belongs to the author's supplied voice or conveys the point better than a literal alternative.
+
+**Before:**
+> The parameter is a dial worth turning as the system finds its footing.
+
+**After:**
+> The parameter is worth testing because it changes how quickly the system adapts.
 
 
 ## CONTENT PATTERNS
@@ -247,17 +260,19 @@ Avoiding AI patterns is only half the job. Sterile, voiceless writing is just as
 
 ## STYLE PATTERNS
 
-### 14. Em Dashes (and En Dashes): Cut Them
+### 14. Em Dash and En Dash Overuse
 
-**Rule:** The final rewrite contains no em dashes or en dashes. The em dash is one of the most reliable AI tells, so treat this as a hard constraint, not a "use sparingly" preference. Replace each one, in rough order of preference: a period (start a new sentence), a comma (a tight aside), a colon (introducing an explanation), parentheses (a true aside), or restructure the sentence. Also catch spaced em dashes and double hyphens used the same way.
+**Problem:** AI prose often uses dashes as a default sentence joint, especially to manufacture an aside or punchline. Repeated use can flatten the author's rhythm into a recognizable template.
+
+**Rule:** Preserve a purposeful dash that fits the author's voice or the document's house style. Replace it when several appear in a short passage, when it hides a real sentence boundary, or when a period, comma, colon, or parenthesis states the relationship more clearly. Keep en dashes used correctly in ranges or established compound forms.
 
 **Before:**
-> The term is primarily promoted by Dutch institutions, not by the people themselves. You don't say "Netherlands, Europe" as an address, yet this mislabeling continues, even in official documents.
+> The term is primarily promoted by Dutch institutions—not by the people themselves—and the mislabeling continues in official documents.
 
 **After:**
-> The term is primarily promoted by Dutch institutions, not by the people themselves. You don't say "Netherlands, Europe" as an address, yet this mislabeling continues in official documents.
+> The term is primarily promoted by Dutch institutions, not by the people themselves. The mislabeling continues in official documents.
 
-Before returning the final rewrite, scan for em and en dashes. Any hit means the draft isn't done.
+Before returning the final rewrite, scan for clusters and habitual use. A dash is evidence to inspect, not an automatic error.
 
 
 ### 15. Overuse of Boldface
@@ -273,7 +288,7 @@ Before returning the final rewrite, scan for em and en dashes. Any hit means the
 
 ### 16. Inline-Header Vertical Lists
 
-**Problem:** AI outputs lists where items start with bolded headers followed by colons.
+**Problem:** AI often produces decorative lists whose bold labels and colons add visual structure without helping the reader compare, scan, or act.
 
 **Before:**
 > - **User Experience:** The user experience has been significantly improved with a new interface.
@@ -283,10 +298,12 @@ Before returning the final rewrite, scan for em and en dashes. Any hit means the
 **After:**
 > The update improves the interface, speeds up load times through optimized algorithms, and adds end-to-end encryption.
 
+Keep or introduce a list when the material is genuinely comparative, procedural, or easier to scan as separate items. Do not flatten useful structure merely because bullets or boldface can be AI tells.
+
 
 ### 17. Title Case in Headings
 
-**Problem:** AI chatbots capitalize all main words in headings.
+**Problem:** AI chatbots often capitalize all main words in headings even when the surrounding document uses sentence case. Follow the document's established heading style rather than changing capitalization mechanically.
 
 **Before:**
 > ## Strategic Negotiations And Global Partnerships
@@ -297,12 +314,14 @@ Before returning the final rewrite, scan for em and en dashes. Any hit means the
 
 ### 18. Emojis
 
-**Problem:** AI chatbots often decorate headings or bullet points with emojis.
+**Problem:** AI chatbots often decorate headings or bullet points with emojis. Remove decorative emoji unless the user requested them or they are part of the supplied voice.
 
 
-### 19. Curly Quotation Marks
+### 19. Quotation Marks and Quote Status
 
-**Problem:** ChatGPT uses curly quotes instead of straight quotes. Replace curly quotes with straight quotes.
+**Problem:** A rewrite can blur the boundary between a source's exact words and the editor's paraphrase. It may also replace quotation-mark style for no substantive reason.
+
+**Rule:** Keep direct quotations marked and textually unchanged unless the user asks to edit them. Write paraphrases in genuinely new wording and never move distinctive source language into unmarked prose. Preserve the document's straight or curly quotation-mark convention unless a house style requires a change.
 
 
 ## COMMUNICATION PATTERNS
@@ -541,9 +560,9 @@ When you see these, lean toward leaving the prose alone: specific unusual detail
 ## Process and Output
 
 1. Read the input carefully and identify every instance of the patterns above.
-2. Write a **draft rewrite**. Check that it reads naturally aloud, varies sentence length, prefers specific details and simple constructions (is/are/has), and keeps the appropriate register.
+2. Write a **draft rewrite**. Check that it reads naturally aloud, varies sentence length, prefers specific details and simple constructions (is/are/has), and keeps the appropriate register. Split a long sentence or paragraph when it contains several independent claims, evidence moves, or changes of angle; do not split merely to make the page look sparse.
 3. Ask: **"What makes the below so obviously AI generated?"** Answer briefly with any remaining tells.
-4. Revise into a **final rewrite** that addresses them and contains no em or en dashes (see §14).
+4. Revise into a **final rewrite** that addresses them and uses punctuation and formatting deliberately rather than mechanically (see §§14-19).
 5. **Score the final rewrite** on each dimension below (1-10). If the total is below 35, revise again.
 
 ### Scoring Rubric
@@ -554,7 +573,7 @@ When you see these, lean toward leaving the prose alone: specific unusual detail
 | Rhythm | Are sentence lengths varied, or metronomic? |
 | Trust | Does it respect the reader's intelligence, or over-explain? |
 | Authenticity | Does it sound like a person wrote it? |
-| Density | Is there anything cuttable without losing meaning? |
+| Density | Is there anything cuttable without losing meaning, or a dense sentence or paragraph hiding several distinct jobs? |
 
 Below 35/50: revise before delivering.
 
@@ -563,4 +582,4 @@ Deliver the draft, the brief "still-AI" bullets, the final rewrite, the score, a
 
 ## Reference
 
-This skill combines [blader/humanizer](https://github.com/blader/humanizer) and [stop-slop](https://github.com/hardikpandya/stop-slop), both under the MIT license. Humanizer is based on [Wikipedia:Signs of AI writing](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing), maintained by WikiProject AI Cleanup. Patterns 34-39 are adapted from stop-slop. Changes are documented in the repository's `docs/UPSTREAM_CHANGES.md`.
+This skill combines [blader/humanizer](https://github.com/blader/humanizer) and [stop-slop](https://github.com/hardikpandya/stop-slop), both under the MIT license. Humanizer is based on [Wikipedia:Signs of AI writing](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing), maintained by WikiProject AI Cleanup. Patterns 34-39 are adapted from stop-slop. The guidance on mannered prose, context-sensitive formatting, and quotation boundaries was informed by Anthropic's [Prompting Claude Fable 5.1](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-1) documentation and generalized beyond that model. Changes are documented in the repository's `docs/UPSTREAM_CHANGES.md`.

@@ -19,7 +19,7 @@ Default output is the revised text only. Add diagnosis only when the user asks w
 
 ## Operating Priorities
 
-1. Preserve facts, numbers, product names, model names, dates, and technical terms.
+1. Preserve facts, numbers, product names, model names, dates, technical terms, citations, exact quotation wording, and the boundary between quotation and paraphrase.
 2. Preserve the author's stance and uncertainty. Do not make the text more neutral just to sound polished.
 3. Prefer concrete claims over abstractions. Keep specific tests, costs, model behavior, engineering details, and workflow observations.
 4. Remove structure shells before polishing words.
@@ -216,7 +216,11 @@ Better:
 
 > 公司账单之外，还要看每个人把额度花到哪里。
 
-### Metaphor and slogan endings
+### Mannered prose, metaphors, and slogan endings
+
+Mannered prose uses a clever metaphor, flourish, or quotable turn where a literal statement would be clearer. The reader has to decode the performance before reaching the claim, and the metaphor can smuggle in implications that the source does not support.
+
+Prefer literal wording when it carries the same meaning more precisely. Keep figurative language when it is already part of the author's voice or communicates something a literal alternative would lose. This check applies throughout the draft, not only to the ending.
 
 Avoid broad metaphors and quotable endings:
 
@@ -237,6 +241,14 @@ Better:
 
 > 读者看不出作者测过什么、踩过什么坑、为什么得出这个判断。
 
+Bad:
+
+> 上下文不是仓库，而是模型判断的燃料。
+
+Better:
+
+> 模型能否作对判断，取决于上下文里有没有相关事实和约束。
+
 ## Rewrite Workflow
 
 1. Identify the target surface: X/Twitter post, long article, product note, model review, or internal note.
@@ -252,7 +264,7 @@ Better:
    - value-lifting summary
    - short imperative hooks such as `别急着...先...` or `顺序别反了`
    - conclusion that repeats the previous paragraph
-4. Rewrite with short public-writing paragraphs. For X/Twitter, default to 3-5 paragraphs.
+4. Choose paragraphing for the target surface. For X/Twitter, default to 3-5 short paragraphs. In longer writing, start a new paragraph when the claim, evidence, speaker, or angle changes. Split sentences or paragraphs that carry several independent jobs, but do not enforce shortness mechanically.
 5. Run the final scan. If any hard-ban shell remains, rewrite that sentence again.
 
 ## Style Rules
@@ -263,7 +275,8 @@ Better:
 - Prefer completed action when reporting completed work: `这轮我保留了 X，用它处理 Y`.
 - Use exact category nouns. Prefer `六类用途`、`三种输出形态`、`两个校验问题` over `几种东西`、`几个方向`.
 - Keep mild roughness if it carries the author's voice.
-- Do not use emoji, hashtags, Markdown tables, or numbered lists in public posts unless the user asks.
+- Let formatting follow the target surface and the information. Public posts default to plain prose, but use a list or table when the user asks for one or when it materially improves comparison, sequence, or scanability. Avoid decorative emoji and hashtags unless requested or present in the supplied voice.
+- Keep direct quotations marked and textually unchanged unless the user asks to edit them. Paraphrase in genuinely new wording; do not move distinctive source language into unmarked prose.
 - Avoid ending with an instruction to the reader. End on a concrete judgment or result.
 
 ## Audit Mode
@@ -296,11 +309,13 @@ Check the final text for these strings and patterns:
 - vague `更适合` / `更像`
 - abstract pressure such as `差距会突然变得很难看`
 - empty focus shifts such as `更值得盯的是个人`
-- metaphor ending that hides concrete information
+- mannered phrasing or a metaphor anywhere in the draft that hides concrete information
 - dangling `这条` / `这篇` / `这个` without an object, e.g. `看完这条` instead of `看完这条视频`
+- a long sentence or paragraph carrying several independent claims, evidence moves, or changes of angle
+- source wording presented as unmarked paraphrase, or a direct quotation changed without authorization
 
 If found, revise before answering.
 
 ## Attribution
 
-Adapted from Pluviobyte's [`ra-人话`](https://github.com/Pluviobyte/rnskill/tree/main/skills/ra-%E4%BA%BA%E8%AF%9D), licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/). This version uses a portable English skill id and adds an explicit Chinese/English routing boundary. Changes are documented in the repository's `docs/UPSTREAM_CHANGES.md`.
+Adapted from Pluviobyte's [`ra-人话`](https://github.com/Pluviobyte/rnskill/tree/main/skills/ra-%E4%BA%BA%E8%AF%9D), licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/). This version uses a portable English skill id and adds an explicit Chinese/English routing boundary. Its guidance on mannered prose, context-sensitive formatting, density, and quotation boundaries was informed by Anthropic's [Prompting Claude Fable 5.1](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-1) documentation and rewritten for Chinese prose. Changes are documented in the repository's `docs/UPSTREAM_CHANGES.md`.

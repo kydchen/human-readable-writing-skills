@@ -2,6 +2,18 @@
 
 This file records where each skill came from, which upstream snapshot was reviewed, and what changed in this repository. Commit hashes make the comparison reproducible even if an upstream project changes later.
 
+## 2026-09-02 cross-model editorial update
+
+Source reviewed: Anthropic, [Prompting Claude Fable 5.1](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-1), accessed 2026-09-02.
+
+The source is model-specific. This repository adopts only three writing mechanisms that remain useful across models, restated in original language rather than copied as a prompt block:
+
+- identify mannered prose that substitutes display for precise statement;
+- choose headings, lists, punctuation, and paragraphing according to the material instead of treating a format as an automatic AI tell;
+- keep direct quotations marked and exact while rewriting paraphrases in the editor's own words.
+
+Agent-runtime advice about effort, tool batching, conversation history, compaction, search triggering, subagents, and task completion remains outside these writing skills.
+
 ## `reader-first-writing`
 
 Sources:
@@ -16,6 +28,9 @@ This is a synthesis, not a renamed copy. It keeps the idea that a reader can rel
 - a four-part reader contract;
 - a structural ledger with explicit edit verdicts;
 - evidence-preservation rules;
+- multi-source synthesis organized by the governing question or comparison axis;
+- visible beat and paragraph boundaries for changes in rhetorical job;
+- quotation-status preservation;
 - a `STRUCTURE FROZEN` handoff;
 - routing to separate Chinese and English language editors.
 
@@ -23,14 +38,14 @@ This is a synthesis, not a renamed copy. It keeps the idea that a reader can rel
 
 Source: Pluviobyte, [`ra-人话`](https://github.com/Pluviobyte/rnskill/tree/main/skills/ra-%E4%BA%BA%E8%AF%9D), snapshot [`d450948`](https://github.com/Pluviobyte/rnskill/commit/d4509487ad4585033b3be92b577c2c98c4255c0a).
 
-The public version changes only the packaging boundary:
+The initial public version changed the packaging boundary:
 
 - renames the machine identifier from `ra-人话` to `chinese-prose-editor`;
 - quotes and rewrites the frontmatter description for portability and discovery;
 - states that the skill handles Chinese while `english-prose-editor` handles English;
 - adds license and attribution metadata.
 
-The editing rules themselves are unchanged from the locally modified `ra-renhua` version. Compared with the upstream file, that local version added six lines and removed two: the portable identifier, quoted description, and four-line language-scope section account for the behavioral diff.
+The initial public version kept the editing rules from the locally modified `ra-renhua` version. The 2026-09-02 update adds a Chinese-specific mannered-prose rule, density and paragraph checks, context-sensitive formatting, and explicit quotation/paraphrase boundaries.
 
 ## `english-prose-editor`
 
@@ -53,6 +68,8 @@ It also adds:
 - explicit English and Chinese routing;
 - optional voice calibration from an author's sample;
 - guidance against false positives;
+- a precision-over-performance rule for mannered prose;
+- context-sensitive punctuation, formatting, paragraphing, and quotation boundaries;
 - a draft, audit, and final rewrite loop;
 - a five-dimension, 50-point final check;
 - an explicit ban on inventing facts, names, dates, citations, examples, or experiences.

@@ -17,6 +17,15 @@
 
 `reader-first-writing` 融合了 `writing-shape` 和 `writing-beats` 的结构方法。它既能把原始材料组织成长文，也能审计一篇完整草稿。结构确认以后，它会把文档标记为 `STRUCTURE FROZEN`，再告诉用户下一步该调用哪个语言编辑技能。
 
+## 2026-09-02：吸收 Claude Fable 5.1 写作指南
+
+三个写作技能已经吸收 Anthropic [Claude Fable 5.1 提示指南](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-1)中可以跨模型复用的写作方法：
+
+- `english-prose-editor` 和 `chinese-prose-editor` 会检查用修辞或比喻替代直述的拿腔作势，也会处理塞入多个判断的长句和段落。标点与格式改为根据材料判断，并明确保留直接引用与转述的边界。
+- `reader-first-writing` 在处理多个来源时，会围绕中心问题或比较维度组织内容，不再逐篇复述。新的修辞任务需要通过 beat 或段落边界显露出来，直接引用仍须保持原文和引用标记。
+
+Fable 专属的 effort、工具批处理、对话历史、上下文压缩、搜索触发、subagent 和任务完成规则没有进入这些写作技能。它们属于 agent 的系统提示词或运行框架。
+
 ## 推荐流程
 
 ```text
@@ -106,9 +115,9 @@ cp -R human-readable-writing-skills/skills/* ~/.claude/skills/
 
 ## 来源与修改
 
-- `reader-first-writing` 融合了 Matt Pocock 的 [`writing-shape`](https://github.com/mattpocock/skills/tree/main/skills/in-progress/writing-shape) 和 [`writing-beats`](https://github.com/mattpocock/skills/tree/main/skills/in-progress/writing-beats)，并加入结构审计、结构冻结和语言交接。
-- `chinese-prose-editor` 是我们对外使用的名字，源自 Pluviobyte 的 [`ra-人话`](https://github.com/Pluviobyte/rnskill/tree/main/skills/ra-%E4%BA%BA%E8%AF%9D)。我们只做了少量必要修改。
-- `english-prose-editor` 融合了 [`blader/humanizer`](https://github.com/blader/humanizer) 与 [`hardikpandya/stop-slop`](https://github.com/hardikpandya/stop-slop)，并加入语言分流、声音校准、误判提示和“草稿、审计、定稿”循环。
+- `reader-first-writing` 融合了 Matt Pocock 的 [`writing-shape`](https://github.com/mattpocock/skills/tree/main/skills/in-progress/writing-shape) 和 [`writing-beats`](https://github.com/mattpocock/skills/tree/main/skills/in-progress/writing-beats)，并加入结构审计、结构冻结、语言交接、多来源综合、可见的 beat 边界和引用状态保护。
+- `chinese-prose-editor` 是我们对外使用的名字，源自 Pluviobyte 的 [`ra-人话`](https://github.com/Pluviobyte/rnskill/tree/main/skills/ra-%E4%BA%BA%E8%AF%9D)。它加入语言分流，以及针对中文拿腔作势、行文密度、格式选择和引用边界的规则。
+- `english-prose-editor` 融合了 [`blader/humanizer`](https://github.com/blader/humanizer) 与 [`hardikpandya/stop-slop`](https://github.com/hardikpandya/stop-slop)，并加入语言分流、声音校准、误判提示、“草稿、审计、定稿”循环，以及对拿腔作势、行文密度、格式、标点和引用边界的语境化检查。
 - `wait-what` 修改自 Matt Pocock 的 [`wait-what`](https://github.com/mattpocock/skills/blob/main/skills/productivity/wait-what/SKILL.md)。
 
 每项修改和本次比对使用的上游版本都记录在 [`docs/UPSTREAM_CHANGES.md`](docs/UPSTREAM_CHANGES.md)。

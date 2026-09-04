@@ -9,14 +9,14 @@ disable-model-invocation: true
 
 Build or repair the path a reader follows through a long-form document. Work at the level of claims, concepts, evidence, sections, and beats before polishing sentences.
 
-Preserve the author's facts, judgments, uncertainty, technical terms, examples, and evidence boundaries. Never invent material to repair a structural gap. Name the gap and ask for material, or recommend cutting the unsupported move.
+Preserve the author's facts, judgments, uncertainty, technical terms, examples, and evidence boundaries. Never invent material to repair a structural gap. Flag missing evidence and work on the supported material. Ask for input when the gap prevents a faithful result; otherwise explain the limitation or recommend cutting the unsupported move.
 
 ## Choose the mode
 
 - **Shape mode:** The input is notes, fragments, a transcript, research material, or an early draft that may be reorganized freely.
-- **Audit mode:** The input is an existing full draft. Diagnose and propose the structural change before rewriting it.
+- **Audit mode:** The user wants a structural judgment on an existing draft. Diagnose and propose changes; rewrite only within the scope the user authorized.
 
-If the input could fit either mode, infer the mode from the request. Ask only when the choice would materially change the result.
+Choose the mode from the requested deliverable, not just the input's maturity. A request to rewrite an existing draft authorizes structural rewriting within the stated boundaries; a request to assess it calls for a judgment. Infer routine choices from the context. Ask only when unresolved intent would materially change the result. A clear draft may need little or no restructuring.
 
 ## Shared model
 
@@ -57,10 +57,10 @@ A beat may be one sentence or several paragraphs. Split it when it performs more
 ## Shape mode
 
 1. Establish the reader contract.
-2. Draft two or three candidate openings. Each opening must imply a distinct angle or thesis and state what route it unlocks. Ask the user to choose when collaboration is expected. If the user requested an autonomous pass, choose one and label the assumption.
+2. Choose an opening that fits the reader contract and available evidence. Consider alternatives when there is a meaningful difference in angle or thesis. Show alternatives when the user requests exploration or a consequential choice needs their input; ordinary drafting does not require a separate opening-selection step.
 3. Build a provisional beat map. Keep each beat to one line and record its job, requires, grounds, and material. Include only beats needed to complete the reader's journey.
 4. Check the map for ungrounded concepts, missing evidence, repeated jobs, unsupported pivots, and an ending that merely stops.
-5. Draft in beat order. At ordinary transitions, choose the next reachable beat directly. Offer alternatives only at a real branch point such as the opening, a major pivot, or the ending.
+5. Draft in beat order. At ordinary transitions, choose the next reachable beat directly. Show alternatives only when a real branch point needs the user's decision or they requested exploration.
 6. After each major section, check that it delivers what the opening promised and leaves the reader ready for the next section.
 7. Stop when the reader's journey is complete. Unused source material may remain unused.
 
@@ -77,13 +77,13 @@ Read the full draft before commenting. Return the structural judgment before lin
    - Are claims paired with the evidence they need?
    - Are any blocks repetitive, premature, orphaned, overloaded, or dense enough to hide several rhetorical jobs?
    - Does the ending resolve the opening without introducing a new argument?
-4. Propose a revised beat map and a concise change list. Show moves, merges, cuts, splits, and missing bridges explicitly.
-5. Do not rewrite the full document before the user approves the structural plan, unless the user requested an autonomous rewrite. In an autonomous pass, present the plan and the rewritten document together so the changes remain auditable.
+4. When restructuring is warranted, develop a revised beat map as a working aid. Explain the proposed moves, merges, cuts, splits, and missing bridges that matter to the judgment. Include the map itself when requested or needed to make a decision reviewable.
+5. For an audit-only request, stop at the judgment and proposed changes. If the user has requested a rewrite, carry it through without an additional plan-approval step unless they explicitly requested staged approval or a consequential ambiguity remains. Accompany a substantial rewrite with a short explanation of the structural changes.
 6. During the rewrite, preserve factual claims, evidence, quotations, numbers, uncertainty, and the author's stance. Flag any conflict that structure alone cannot resolve.
 
 ## Structure freeze and language handoff
 
-When the author approves the structure, mark the document `STRUCTURE FROZEN` and provide this handoff:
+When the author approves the structure, mark the document `STRUCTURE FROZEN` and provide this handoff when a language pass is needed. Delivering a requested rewrite does not itself imply author approval of the structure.
 
 ```text
 Preserve section and beat order. Sentence-level and within-block paragraph edits are allowed.
@@ -110,11 +110,14 @@ Do not invoke a language editor automatically. The user starts that pass explici
 
 ## Default outputs
 
-- **Shape mode:** reader contract, proposed beat map, then the draft.
-- **Audit mode:** overall structural judgment, structural ledger, revised beat map, and the rewritten draft only when authorized.
+- **Shape or authorized rewrite:** the draft, with a brief note on consequential assumptions or substantial structural changes when needed.
+- **Audit-only:** overall structural judgment and a prioritized explanation of the changes the draft actually needs, grounded in the relevant passages. Say when the existing structure works.
+- Use the reader contract, ledger, and beat map as working aids. Show them when requested or when a specific part is needed to make a structural decision reviewable; do not attach all of them by default.
 
-Keep diagnostic prose concise. The document is the deliverable.
+Match the requested deliverable. Keep diagnostic prose concise without omitting evidence needed to assess a structural judgment. Preserve the explicit structure-freeze and user-invoked language handoff above.
 
 ## Attribution
+
+The 2026-09-05 adaptation, informed by OpenAI's [GPT-6 Astra guidance](https://developers.openai.com/api/docs/guides/latest-model), makes output and approval steps follow the user's requested deliverable. It remains model-independent; the adaptation is documented in `docs/UPSTREAM_CHANGES.md` in the source repository.
 
 This skill adapts the reader-grounding and beat concepts from Matt Pocock's MIT-licensed [`writing-shape`](https://github.com/mattpocock/skills/tree/main/skills/in-progress/writing-shape) and [`writing-beats`](https://github.com/mattpocock/skills/tree/main/skills/in-progress/writing-beats). Audit mode, structure freeze, and the downstream language handoff are local additions. The multi-source synthesis, visible beat-boundary, and quotation-status guidance was informed by Anthropic's [Prompting Claude Fable 5.1](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-1) documentation and generalized beyond that model.

@@ -2,6 +2,18 @@
 
 This file records where each skill came from, which upstream snapshot was reviewed, and what changed in this repository. Commit hashes make the comparison reproducible even if an upstream project changes later.
 
+## 2026-09-05 GPT-6 Astra adaptation
+
+Source reviewed: OpenAI, [Using GPT-6 Astra](https://developers.openai.com/api/docs/guides/latest-model), accessed 2026-09-05, especially instruction following and personality and writing style.
+
+The guide motivates auditing conflicting skill instructions and making the desired output explicit. The following are this repository's editorial decisions in response, not model-performance findings or a copied system prompt:
+
+- English editing now defaults to the revised text, permits unchanged passages, and uses a focused fidelity/readability check. The mandatory draft/self-critique/final bundle, numerical self-rating, and score-triggered rewrite loop were removed. Rules and examples no longer encourage inventing a named actor, a second-person scene, or an author's feelings to make text vivid.
+- Chinese pattern lists now trigger contextual inspection rather than unconditional string replacement. Meaningful corrections, inferences, clear references, technical terms, direct quotations, and explicit user preferences take precedence over generic pattern matching. Diagnosis has no minimum finding count.
+- Structural editing selects its workflow from the requested deliverable. A requested rewrite does not require an extra routine plan approval. Audit-only requests remain diagnostic, and author-approved structure freeze and user-invoked language editing are preserved. Contracts, ledgers, and beat maps remain working aids and are shown selectively.
+
+The skills remain model-independent. Reasoning effort, model routing, runtime permissions, tool orchestration, and Personalization are outside this update. Validation checks instruction consistency, packaging, and installed-copy synchronization; no model-level A/B evaluation has been performed.
+
 ## 2026-09-02 cross-model editorial update
 
 Source reviewed: Anthropic, [Prompting Claude Fable 5.1](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-1), accessed 2026-09-02.
@@ -70,8 +82,8 @@ It also adds:
 - guidance against false positives;
 - a precision-over-performance rule for mannered prose;
 - context-sensitive punctuation, formatting, paragraphing, and quotation boundaries;
-- a draft, audit, and final rewrite loop;
-- a five-dimension, 50-point final check;
+- a focused fidelity and readability check with revised-text-only default output;
+- contextual pattern inspection and permission to leave already-clear prose unchanged;
 - an explicit ban on inventing facts, names, dates, citations, examples, or experiences.
 
 The current upstream Humanizer was substantially rewritten after this fork's base. Its present pattern numbering therefore does not map one-to-one to this repository. We document the lineage instead of claiming that this file is a patch against current upstream.

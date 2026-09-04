@@ -17,6 +17,16 @@
 
 `reader-first-writing` 融合了 `writing-shape` 和 `writing-beats` 的结构方法。它既能把原始材料组织成长文，也能审计一篇完整草稿。结构确认以后，它会把文档标记为 `STRUCTURE FROZEN`，再告诉用户下一步该调用哪个语言编辑技能。
 
+## 2026-09-05：适配 GPT-6 Astra
+
+三个写作技能已根据 OpenAI 的 [GPT-6 Astra 使用指南](https://developers.openai.com/api/docs/guides/latest-model)调整指令，重点处理模型对规则更敏感时可能出现的机械修改和输出膨胀，仍可跨模型使用。
+
+- `english-prose-editor` 默认只返回改稿，用一次事实保真与可读性检查替代初稿、自我批评和评分循环。已经清楚的文字可以保留，规则与示例也更严格地限制凭空补充行动者、体验和细节。
+- `chinese-prose-editor` 根据语境判断词语和句式，保留有实际作用的纠正、推论与清楚的指代，同时遵守用户明确的表达偏好，保持直接引文原样。
+- `reader-first-writing` 保留结构分析方法，按需展示结构台账和节拍图。用户已要求重写时，不再增加常规方案确认步骤；只要求审查时仍只交付判断，结构冻结与语言编辑继续由用户明确确认和启动。
+
+这是指令层面的适配，尚未进行模型效果的 A/B 对照测试，也不要求使用 GPT-6 才能运行。模型选择、推理档位、工具调度和 Personalization 设置继续放在写作技能之外。
+
 ## 2026-09-02：吸收 Claude Fable 5.1 写作指南
 
 三个写作技能已经吸收 Anthropic [Claude Fable 5.1 提示指南](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-1)中可以跨模型复用的写作方法：
@@ -117,7 +127,7 @@ cp -R human-readable-writing-skills/skills/* ~/.claude/skills/
 
 - `reader-first-writing` 融合了 Matt Pocock 的 [`writing-shape`](https://github.com/mattpocock/skills/tree/main/skills/in-progress/writing-shape) 和 [`writing-beats`](https://github.com/mattpocock/skills/tree/main/skills/in-progress/writing-beats)，并加入结构审计、结构冻结、语言交接、多来源综合、可见的 beat 边界和引用状态保护。
 - `chinese-prose-editor` 是我们对外使用的名字，源自 Pluviobyte 的 [`ra-人话`](https://github.com/Pluviobyte/rnskill/tree/main/skills/ra-%E4%BA%BA%E8%AF%9D)。它加入语言分流，以及针对中文拿腔作势、行文密度、格式选择和引用边界的规则。
-- `english-prose-editor` 融合了 [`blader/humanizer`](https://github.com/blader/humanizer) 与 [`hardikpandya/stop-slop`](https://github.com/hardikpandya/stop-slop)，并加入语言分流、声音校准、误判提示、“草稿、审计、定稿”循环，以及对拿腔作势、行文密度、格式、标点和引用边界的语境化检查。
+- `english-prose-editor` 融合了 [`blader/humanizer`](https://github.com/blader/humanizer) 与 [`hardikpandya/stop-slop`](https://github.com/hardikpandya/stop-slop)，并加入语言分流、声音校准、误判提示、事实保真检查，以及对拿腔作势、行文密度、格式、标点和引用边界的语境化检查。
 - `wait-what` 修改自 Matt Pocock 的 [`wait-what`](https://github.com/mattpocock/skills/blob/main/skills/productivity/wait-what/SKILL.md)。
 
 每项修改和本次比对使用的上游版本都记录在 [`docs/UPSTREAM_CHANGES.md`](docs/UPSTREAM_CHANGES.md)。

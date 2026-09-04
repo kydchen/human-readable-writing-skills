@@ -17,6 +17,16 @@ Hard-to-read writing does not have one cause. A reply may be missing context. A 
 
 `reader-first-writing` combines the structural ideas in `writing-shape` and `writing-beats`. It can shape raw material or audit a complete draft. Once the structure is approved, it marks the document `STRUCTURE FROZEN` and tells the user which language editor to invoke next.
 
+## 2026-09-05: GPT-6 Astra adaptation
+
+The three writing skills have been adapted using OpenAI's [GPT-6 Astra guidance](https://developers.openai.com/api/docs/guides/latest-model). The changes address instruction sensitivity and unnecessarily elaborate output while keeping the skills usable across models:
+
+- `english-prose-editor` returns the revised text by default. It replaces the draft/self-critique/score loop with a focused fidelity and readability check, allows clear passages to remain unchanged, and tightens rules and examples about invented actors, experiences, and details.
+- `chinese-prose-editor` treats listed words and patterns as contextual editorial cues. It preserves meaningful corrections, inferences, and clear references while respecting explicit user preferences and exact quotations.
+- `reader-first-writing` keeps structural analysis as a working method and shows ledgers or beat maps when requested or needed for a decision. It completes authorized rewrites without inserting routine approval steps, while retaining audit-only requests, author-approved structure freeze, and an explicitly requested language pass.
+
+This is an instruction-level adaptation, not a benchmarked claim of better writing quality or a GPT-6-only requirement. Model-level A/B evaluation has not been performed for this update. Model selection, reasoning effort, tool orchestration, and Personalization settings remain outside these skills.
+
 ## 2026-09-02 editorial update
 
 The three writing skills now incorporate selected, cross-model lessons from Anthropic's [Prompting Claude Fable 5.1](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-1) guidance:
@@ -117,7 +127,7 @@ The skills use portable `SKILL.md` files. The optional `agents/openai.yaml` file
 
 - `reader-first-writing` merges Matt Pocock's [`writing-shape`](https://github.com/mattpocock/skills/tree/main/skills/in-progress/writing-shape) and [`writing-beats`](https://github.com/mattpocock/skills/tree/main/skills/in-progress/writing-beats), then adds audit mode, a structure freeze, language handoff, multi-source synthesis, visible beat boundaries, and quotation-status preservation.
 - `chinese-prose-editor` is the public name of our fork of Pluviobyte's [`ra-人话`](https://github.com/Pluviobyte/rnskill/tree/main/skills/ra-%E4%BA%BA%E8%AF%9D). It adds language routing plus Chinese-specific guidance on mannered prose, density, context-sensitive formatting, and quotation boundaries.
-- `english-prose-editor` combines ideas and rules from [`blader/humanizer`](https://github.com/blader/humanizer) and [`hardikpandya/stop-slop`](https://github.com/hardikpandya/stop-slop), with language routing, voice calibration, false-positive guidance, a draft-audit-final loop, and context-sensitive checks for mannered prose, density, formatting, punctuation, and quotation boundaries.
+- `english-prose-editor` combines ideas and rules from [`blader/humanizer`](https://github.com/blader/humanizer) and [`hardikpandya/stop-slop`](https://github.com/hardikpandya/stop-slop), with language routing, voice calibration, false-positive guidance, a focused fidelity check, and context-sensitive checks for mannered prose, density, formatting, punctuation, and quotation boundaries.
 - `wait-what` is a small modification of Matt Pocock's [`wait-what`](https://github.com/mattpocock/skills/blob/main/skills/productivity/wait-what/SKILL.md).
 
 See [`docs/UPSTREAM_CHANGES.md`](docs/UPSTREAM_CHANGES.md) for the exact differences and source snapshots.

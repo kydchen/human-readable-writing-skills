@@ -18,12 +18,12 @@ Use this skill for English text. For Chinese text, use `chinese-prose-editor` in
 When given text to humanize:
 
 1. **Identify AI patterns** - Scan for the patterns listed below.
-2. **Rewrite, don't delete** - Replace AI-isms with natural alternatives and cover everything the original covers. Preserve the source's paragraphing unless a sentence or paragraph hides several distinct jobs; then split or merge only enough to make the passage readable.
+2. **Edit only where useful** - Revise wording that obscures meaning, repeats a point, or conflicts with the author's voice. Leave clear, accurate prose unchanged. Trim redundant wording without dropping information or rhetorical purpose. Preserve the source's paragraphing unless a sentence or paragraph hides several distinct jobs; then split or merge only enough to make the passage readable.
 3. **Preserve meaning and evidence boundaries** - Keep the core message, claim strength, uncertainty, technical terms, citations, and distinction between quotation and paraphrase intact. Leave direct quotations unchanged unless the user asks to edit them.
 4. **Match the voice** - Fit the intended tone (formal, casual, technical). Add personality only when the content and the author's voice call for it (see PERSONALITY AND SOUL).
 5. **Do not invent** - Do not add facts, names, dates, citations, examples, or experiences that are absent from the source.
 
-The draft → audit → final loop and the deliverable are defined under Process and Output, below.
+The patterns below are editorial cues, not proof of AI authorship or a checklist of mandatory replacements. The user's requested genre, house style, and explicit wording preferences govern the edit. Keep direct quotations exact. The default deliverable is the revised text only, as defined under Process and Output.
 
 
 ## Voice Calibration (Optional)
@@ -40,7 +40,7 @@ If the user provides a writing sample (their own previous writing), analyze it b
 
 2. **Match their voice in the rewrite.** Don't just remove AI patterns - replace them with patterns from the sample. If they write short sentences, don't produce long ones. If they use "stuff" and "things," don't upgrade to "elements" and "components."
 
-3. **When no sample is provided,** fall back to the default behavior (natural, varied, opinionated voice from the PERSONALITY AND SOUL section below).
+3. **When no sample is provided,** preserve the input's register and degree of personality. Use plain, natural wording without adding opinions, humor, first person, or experiences that the source does not supply.
 
 ### How to provide a sample
 - Inline: "Humanize this text. Here's a sample of my writing for voice matching: [sample]"
@@ -63,17 +63,19 @@ Avoiding AI patterns is only half the job. Sterile, voiceless writing is just as
 
 ### How to add voice:
 
-**Have opinions.** Don't just report facts - react to them. "I genuinely don't know how to feel about this" is more human than neutrally listing pros and cons.
+**Preserve opinions.** Keep the author's stated judgment and mixed feelings when present. Do not invent a reaction or turn neutral reporting into first-person commentary.
 
 **Vary your rhythm.** Short punchy sentences. Then longer ones that take their time getting where they're going. Mix it up.
 
-**Let some mess in.** Perfect structure feels algorithmic. Tangents, asides, and half-formed thoughts are human.
+**Preserve purposeful asides.** Keep an aside or self-correction when it carries the author's voice or meaning. Do not add tangents or disorder to manufacture a human style.
 
-### Before (clean but soulless):
+### Before (vague framing):
 > The experiment produced interesting results. The agents generated 3 million lines of code. Some developers were impressed while others were skeptical. The implications remain unclear.
 
-### After (has a pulse):
-> I genuinely don't know how to feel about this one. 3 million lines of code, generated while the humans presumably slept. Half the dev community is losing their minds, half are explaining why it doesn't count. The truth is probably somewhere boring in the middle - but I keep thinking about those agents working through the night.
+### After (same facts and register):
+> The agents generated 3 million lines of code. Some developers were impressed, while others were skeptical. The implications remain unclear.
+
+Editorial examples illustrate a local wording choice. They never authorize adding a named actor, motive, causal link, quantity, or personal experience to a user's draft.
 
 
 ## PRECISION OVER PERFORMANCE
@@ -86,7 +88,7 @@ Prefer the literal wording when it carries the same meaning more precisely. This
 > The parameter is a dial worth turning as the system finds its footing.
 
 **After:**
-> The parameter is worth testing because it changes how quickly the system adapts.
+> The parameter is worth testing while the system stabilizes.
 
 
 ## CONTENT PATTERNS
@@ -101,7 +103,7 @@ Prefer the literal wording when it carries the same meaning more precisely. This
 > The Statistical Institute of Catalonia was officially established in 1989, marking a pivotal moment in the evolution of regional statistics in Spain. This initiative was part of a broader movement across Spain to decentralize administrative functions and enhance regional governance.
 
 **After:**
-> The Statistical Institute of Catalonia was established in 1989 to collect and publish regional statistics independently from Spain's national statistics office.
+> The Statistical Institute of Catalonia was established in 1989 as part of Spain's broader effort to decentralize administrative functions and strengthen regional governance.
 
 
 ### 2. Undue Emphasis on Notability and Media Coverage
@@ -114,7 +116,7 @@ Prefer the literal wording when it carries the same meaning more precisely. This
 > Her views have been cited in The New York Times, BBC, Financial Times, and The Hindu. She maintains an active social media presence with over 500,000 followers.
 
 **After:**
-> In a 2024 New York Times interview, she argued that AI regulation should focus on outcomes rather than methods.
+> The New York Times, BBC, Financial Times, and The Hindu have cited her views. She has over 500,000 social media followers.
 
 
 ### 3. Superficial Analyses with -ing Endings
@@ -127,7 +129,7 @@ Prefer the literal wording when it carries the same meaning more precisely. This
 > The temple's color palette of blue, green, and gold resonates with the region's natural beauty, symbolizing Texas bluebonnets, the Gulf of Mexico, and the diverse Texan landscapes, reflecting the community's deep connection to the land.
 
 **After:**
-> The temple uses blue, green, and gold colors. The architect said these were chosen to reference local bluebonnets and the Gulf coast.
+> The temple uses blue, green, and gold to symbolize Texas bluebonnets, the Gulf of Mexico, and Texan landscapes.
 
 
 ### 4. Promotional and Advertisement-like Language
@@ -140,7 +142,7 @@ Prefer the literal wording when it carries the same meaning more precisely. This
 > Nestled within the breathtaking region of Gonder in Ethiopia, Alamata Raya Kobo stands as a vibrant town with a rich cultural heritage and stunning natural beauty.
 
 **After:**
-> Alamata Raya Kobo is a town in the Gonder region of Ethiopia, known for its weekly market and 18th-century church.
+> Alamata Raya Kobo is a town in the Gonder region of Ethiopia.
 
 
 ### 5. Vague Attributions and Weasel Words
@@ -152,8 +154,8 @@ Prefer the literal wording when it carries the same meaning more precisely. This
 **Before:**
 > Due to its unique characteristics, the Haolai River is of interest to researchers and conservationists. Experts believe it plays a crucial role in the regional ecosystem.
 
-**After:**
-> The Haolai River supports several endemic fish species, according to a 2019 survey by the Chinese Academy of Sciences.
+**Editorial response when the source is missing:**
+> The draft does not identify the experts or explain the river's ecological role. A source is needed before making that claim more specific.
 
 
 ### 6. Outline-like "Challenges and Future Prospects" Sections
@@ -166,7 +168,7 @@ Prefer the literal wording when it carries the same meaning more precisely. This
 > Despite its industrial prosperity, Korattur faces challenges typical of urban areas, including traffic congestion and water scarcity. Despite these challenges, with its strategic location and ongoing initiatives, Korattur continues to thrive as an integral part of Chennai's growth.
 
 **After:**
-> Traffic congestion increased after 2015 when three new IT parks opened. The municipal corporation began a stormwater drainage project in 2022 to address recurring floods.
+> Korattur faces traffic congestion and water scarcity.
 
 
 ## LANGUAGE AND GRAMMAR PATTERNS
@@ -181,7 +183,7 @@ Prefer the literal wording when it carries the same meaning more precisely. This
 > Additionally, a distinctive feature of Somali cuisine is the incorporation of camel meat. An enduring testament to Italian colonial influence is the widespread adoption of pasta in the local culinary landscape, showcasing how these dishes have integrated into the traditional diet.
 
 **After:**
-> Somali cuisine also includes camel meat, which is considered a delicacy. Pasta dishes, introduced during Italian colonization, remain common, especially in the south.
+> Somali cuisine includes camel meat. Pasta dishes introduced during Italian colonization are also widely eaten.
 
 
 ### 8. Avoidance of "is"/"are" (Copula Avoidance)
@@ -194,7 +196,7 @@ Prefer the literal wording when it carries the same meaning more precisely. This
 > Gallery 825 serves as LAAA's exhibition space for contemporary art. The gallery features four separate spaces and boasts over 3,000 square feet.
 
 **After:**
-> Gallery 825 is LAAA's exhibition space for contemporary art. The gallery has four rooms totaling 3,000 square feet.
+> Gallery 825 is LAAA's exhibition space for contemporary art. It has four separate spaces and covers over 3,000 square feet.
 
 
 ### 9. Negative Parallelisms and Tailing Negations
@@ -205,7 +207,7 @@ Prefer the literal wording when it carries the same meaning more precisely. This
 > It's not just about the beat riding under the vocals; it's part of the aggression and atmosphere. It's not merely a song, it's a statement.
 
 **After:**
-> The heavy beat adds to the aggressive tone.
+> The beat adds to the aggressive tone and atmosphere.
 
 **Before (tailing negation):**
 > The options come from the selected item, no guessing.
@@ -227,7 +229,7 @@ Prefer the literal wording when it carries the same meaning more precisely. This
 
 ### 11. Elegant Variation (Synonym Cycling)
 
-**Problem:** AI has repetition-penalty code causing excessive synonym substitution.
+**Problem:** Repeatedly changing the name of the same person or concept can make a passage harder to follow.
 
 **Before:**
 > The protagonist faces many challenges. The main character must overcome obstacles. The central figure eventually triumphs. The hero returns home.
@@ -244,7 +246,7 @@ Prefer the literal wording when it carries the same meaning more precisely. This
 > Our journey through the universe has taken us from the singularity of the Big Bang to the grand cosmic web, from the birth and death of stars to the enigmatic dance of dark matter.
 
 **After:**
-> The book covers the Big Bang, star formation, and current theories about dark matter.
+> The passage covers the Big Bang, the lives of stars, and dark matter.
 
 
 ### 13. Passive Voice and Subjectless Fragments
@@ -412,7 +414,7 @@ Keep or introduce a list when the material is genuinely comparative, procedural,
 
 ### 34. False Agency
 
-**Problem:** AI gives inanimate objects human verbs to avoid naming the actor. Complaints don't "become" fixes. Bets don't "live or die." Decisions don't "emerge." A person does something to make those things happen.
+**Problem:** Figurative agency can obscure who acted or how a change happened. Inspect it when the actor or mechanism matters. Accurate statements about software, institutions, data, and other nonhuman subjects can remain impersonal.
 
 **Patterns to catch:**
 
@@ -427,17 +429,17 @@ Keep or introduce a list when the material is genuinely comparative, procedural,
 | "the market rewards" | Markets don't reward. Buyers pay for things. |
 
 **Before:**
-> The conversation moved toward cost reduction, and a new strategy emerged.
+> After the team reviewed costs, the conversation moved toward vendor spending, and a new strategy emerged.
 
 **After:**
-> The CFO steered the discussion toward cost reduction. The team chose to cut two vendor contracts.
+> The team reviewed costs and developed a new strategy for vendor spending.
 
-**Rule:** Name the human. "The team fixed it that week" beats "the complaint becomes a fix." If no specific person fits, use "you" to put the reader in the seat.
+**Rule:** Name the actor when the source identifies one and doing so clarifies the claim. If the actor is unknown or irrelevant, keep an accurate passive or impersonal construction. Do not invent an actor or substitute "you" for an unspecified person.
 
 
 ### 35. Narrator-from-a-Distance
 
-**Problem:** AI floats above the scene like a lecturer instead of putting the reader in it. This voice feels detached and synthetic.
+**Problem:** Generic commentary can distance readers from an account that is meant to convey a specific experience. Neutral explanation is appropriate for academic, technical, and reference writing.
 
 **Patterns to catch:**
 
@@ -452,9 +454,9 @@ Keep or introduce a list when the material is genuinely comparative, procedural,
 > Nobody designed this problem. People tend to ignore small inefficiencies until they compound.
 
 **After:**
-> You don't sit down one day and decide to let the process rot. You skip one review, then another, and six months later the whole pipeline is held together with duct tape.
+> No one designed this problem. Small inefficiencies accumulated as people overlooked them.
 
-**Rule:** Put the reader in the room. "You" beats "People." Specifics beat abstractions.
+**Rule:** Use the source's actual viewpoint and concrete details. Address the reader as "you" only when the intended genre and source support it. Do not invent a scene, timeline, or experience to make an explanation vivid.
 
 
 ### 36. Business Jargon
@@ -509,12 +511,12 @@ Keep or introduce a list when the material is genuinely comparative, procedural,
 - "The consequences are real"
 
 **Before:**
-> The reasons are structural. The implications are significant, and the stakes are high.
+> The reasons are structural. Product and engineering need separate approvals for a roadmap change. The implications are significant.
 
 **After:**
-> The org chart puts product and engineering under separate VPs who report to different board members. That split means no one person can approve a roadmap change, which adds two weeks to every decision.
+> Product and engineering need separate approvals for a roadmap change.
 
-**Rule:** If a sentence says something is important, deep, or structural without showing the specific thing, cut it or replace it with the specific thing.
+**Rule:** Replace an empty announcement with the concrete information already supplied. If the source lacks that information, flag the gap or remove only empty framing. Do not invent an organizational structure, delay, or consequence.
 
 
 ### 39. Empty-Emphasis Adverbs
@@ -559,27 +561,16 @@ When you see these, lean toward leaving the prose alone: specific unusual detail
 
 ## Process and Output
 
-1. Read the input carefully and identify every instance of the patterns above.
-2. Write a **draft rewrite**. Check that it reads naturally aloud, varies sentence length, prefers specific details and simple constructions (is/are/has), and keeps the appropriate register. Split a long sentence or paragraph when it contains several independent claims, evidence moves, or changes of angle; do not split merely to make the page look sparse.
-3. Ask: **"What makes the below so obviously AI generated?"** Answer briefly with any remaining tells.
-4. Revise into a **final rewrite** that addresses them and uses punctuation and formatting deliberately rather than mechanically (see §§14-19).
-5. **Score the final rewrite** on each dimension below (1-10). If the total is below 35, revise again.
+1. Read the full input and infer the intended genre and voice from the request and supplied material. If the user asks for diagnosis only, explain the concrete issues without rewriting the draft.
+2. Revise the passages with a specific clarity, repetition, or voice problem. An isolated pattern match is not sufficient reason to edit. Preserve clear passages, including the whole input when no useful change is needed.
+3. Check the revision once for factual fidelity, claim strength, uncertainty, quotation status, authorial voice, and any remaining concrete readability problem. Split dense sentences or paragraphs only when they carry separate jobs.
+4. Correct a specific problem found in that check, then deliver. Do not repeat whole-draft rewrites to satisfy a score or an assumption that the text must still sound AI-generated.
 
-### Scoring Rubric
-
-| Dimension | Question |
-|-----------|----------|
-| Directness | Does it make statements, or announce that it's about to make statements? |
-| Rhythm | Are sentence lengths varied, or metronomic? |
-| Trust | Does it respect the reader's intelligence, or over-explain? |
-| Authenticity | Does it sound like a person wrote it? |
-| Density | Is there anything cuttable without losing meaning, or a dense sentence or paragraph hiding several distinct jobs? |
-
-Below 35/50: revise before delivering.
-
-Deliver the draft, the brief "still-AI" bullets, the final rewrite, the score, and (optionally) a short summary of changes.
+Default output is the revised text only. Return the original text when it already meets the request. Provide diagnosis, alternatives, a comparison, or a change summary only when requested; flag an unresolved material gap briefly when needed. Do not attach a preliminary draft, self-critique, or self-assigned score by default.
 
 
 ## Reference
+
+The 2026-09-05 adaptation, informed by OpenAI's [GPT-6 Astra guidance](https://developers.openai.com/api/docs/guides/latest-model), simplifies delivery and resolves conflicting editorial instructions. It remains model-independent; the adaptation is documented in `docs/UPSTREAM_CHANGES.md` in the source repository.
 
 This skill combines [blader/humanizer](https://github.com/blader/humanizer) and [stop-slop](https://github.com/hardikpandya/stop-slop), both under the MIT license. Humanizer is based on [Wikipedia:Signs of AI writing](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing), maintained by WikiProject AI Cleanup. Patterns 34-39 are adapted from stop-slop. The guidance on mannered prose, context-sensitive formatting, and quotation boundaries was informed by Anthropic's [Prompting Claude Fable 5.1](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-1) documentation and generalized beyond that model. Changes are documented in the repository's `docs/UPSTREAM_CHANGES.md`.

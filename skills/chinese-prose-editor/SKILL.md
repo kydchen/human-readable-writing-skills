@@ -24,14 +24,15 @@ Default output is the revised text only. Add diagnosis only when the user asks w
 3. Prefer concrete claims over abstractions. Keep specific tests, costs, model behavior, engineering details, and workflow observations.
 4. Remove structure shells before polishing words.
 5. Do not add new examples, data, quotes, or personal experience.
+6. Leave clear, accurate passages unchanged. A useful edit can be small; returning the original text is appropriate when it already meets the request.
 
-## Hard Bans
+## Editorial patterns and explicit preferences
 
-Avoid these in final copy unless the user explicitly wants to discuss the phrase itself.
+Respect the user's explicit wording restrictions and the target genre. Otherwise, the patterns below are cues to inspect, not automatic errors or evidence of AI authorship. Revise when a phrase adds empty emphasis, repeats information, obscures a referent, or conflicts with the author's voice. Keep wording that carries a real correction, inference, comparison, or transition. Preserve direct quotations and established technical terms; do not apply style substitutions inside them.
 
 ### Binary contrast shells
 
-Do not use:
+Avoid these as generic emphasis templates:
 
 - `不是 A，而是 B`
 - `并非 A，而是 B`
@@ -41,7 +42,7 @@ Do not use:
 - `与其 A，不如 B`
 - `不是一两分钟，而是...`
 
-Rewrite by stating the actual claim directly.
+State the actual claim directly when the contrast adds no information. Preserve a necessary distinction in meaning, while following any explicit user restriction on how to phrase it.
 
 Bad:
 
@@ -90,7 +91,7 @@ Better:
 
 ### Fake insight markers
 
-Avoid:
+Inspect these when they announce insight without supplying it:
 
 - `真正`
 - `其实`
@@ -104,7 +105,7 @@ Avoid:
 - `这说明`
 - `这背后`
 
-Rewrite by entering the claim or evidence directly.
+Enter the claim or evidence directly when the marker adds no meaning. A word such as `其实` can carry a correction, and `这说明` can connect evidence to an inference; do not remove that relationship just because the word appears here. Keep the original degree of certainty.
 
 Bad:
 
@@ -150,13 +151,13 @@ Avoid vague placeholders when the reader needs a category.
 
 Replace them with the exact category: `用途`、`项目类型`、`规则`、`输出形态`、`测试结果`、`写作流程`.
 
-Dangling demonstratives must carry their object, especially in spoken scripts where the listener cannot look back:
+Check demonstratives with unclear referents, especially in spoken scripts where the listener cannot look back. When the object is missing from context:
 
 - `看完这条` → `看完这条视频`
 - `这篇讲的是` → `这篇论文讲的是`
 - `这个很好用` → `这个工具很好用`
 
-Complete every `这条`、`这篇`、`这个` whose referent is not named in the same sentence.
+Supply the noun when the referent would otherwise be unclear to the intended reader or listener. A clear referent in the preceding sentence is sufficient; do not repeat nouns mechanically.
 
 ### Wrong time stance
 
@@ -265,7 +266,7 @@ Better:
    - short imperative hooks such as `别急着...先...` or `顺序别反了`
    - conclusion that repeats the previous paragraph
 4. Choose paragraphing for the target surface. For X/Twitter, default to 3-5 short paragraphs. In longer writing, start a new paragraph when the claim, evidence, speaker, or angle changes. Split sentences or paragraphs that carry several independent jobs, but do not enforce shortness mechanically.
-5. Run the final scan. If any hard-ban shell remains, rewrite that sentence again.
+5. Run one final check for fidelity, clarity, and the relevant patterns below. Correct concrete problems in the affected passages, then deliver. Do not repeat full rewrites just to eliminate every listed string.
 
 ## Style Rules
 
@@ -281,9 +282,9 @@ Better:
 
 ## Audit Mode
 
-When the user asks why something feels AI-like, return 3-6 concrete triggers. Each trigger must quote the phrase and name the pattern.
+When the user asks why something feels AI-like, report only the concrete problems the text supports. Quote the relevant phrase and explain its effect on meaning, clarity, or voice. A pattern name alone is not a diagnosis. If the passage is already clear and appropriate, say so; do not fill a quota or treat style as proof of authorship.
 
-Use this format:
+For example, report only the findings that apply:
 
 ```text
 1. 「...」：二元对比壳。直接说后半句承载的判断。
@@ -293,7 +294,7 @@ Use this format:
 
 ## Before Returning
 
-Check the final text for these strings and patterns:
+Use these cues to inspect the final text in context:
 
 - `不是` near `而是`
 - `不在于` near `在于`
@@ -310,12 +311,14 @@ Check the final text for these strings and patterns:
 - abstract pressure such as `差距会突然变得很难看`
 - empty focus shifts such as `更值得盯的是个人`
 - mannered phrasing or a metaphor anywhere in the draft that hides concrete information
-- dangling `这条` / `这篇` / `这个` without an object, e.g. `看完这条` instead of `看完这条视频`
+- an unclear referent for `这条` / `这篇` / `这个`, considering both the passage and whether it will be read or heard
 - a long sentence or paragraph carrying several independent claims, evidence moves, or changes of angle
 - source wording presented as unmarked paraphrase, or a direct quotation changed without authorization
 
-If found, revise before answering.
+Revise only confirmed clarity or voice problems and violations of the user's explicit preferences. Preserve necessary meaning, clear references, direct quotations, and technical terms. Default to the revised text only, without a score, preliminary draft, or unsolicited diagnostic report.
 
 ## Attribution
+
+The 2026-09-05 adaptation, informed by OpenAI's [GPT-6 Astra guidance](https://developers.openai.com/api/docs/guides/latest-model), makes pattern inspection contextual while preserving explicit user preferences and source meaning. It remains model-independent; the adaptation is documented in `docs/UPSTREAM_CHANGES.md` in the source repository.
 
 Adapted from Pluviobyte's [`ra-人话`](https://github.com/Pluviobyte/rnskill/tree/main/skills/ra-%E4%BA%BA%E8%AF%9D), licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/). This version uses a portable English skill id and adds an explicit Chinese/English routing boundary. Its guidance on mannered prose, context-sensitive formatting, density, and quotation boundaries was informed by Anthropic's [Prompting Claude Fable 5.1](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-1) documentation and rewritten for Chinese prose. Changes are documented in the repository's `docs/UPSTREAM_CHANGES.md`.

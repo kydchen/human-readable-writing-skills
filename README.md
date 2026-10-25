@@ -17,6 +17,10 @@ Hard-to-read writing does not have one cause. A reply may be missing context. A 
 
 `reader-first-writing` combines the structural ideas in `writing-shape` and `writing-beats`. It can shape raw material or audit a complete draft. Once the structure is approved, it marks the document `STRUCTURE FROZEN` and tells the user which language editor to invoke next.
 
+## 2026-10-25: Reader effort
+
+The two language editors now inspect overly compressed wording as well as formulaic prose. They can unpack noun chains, clarify modifier relationships, and restore useful grammatical cues while preserving technical terms and the author's meaning. A useful edit may add words. The [update notes](docs/UPSTREAM_CHANGES.md#2026-10-25-reader-effort-update) explain the research basis, its English-only scope, and the untested status of the Chinese adaptations and editing effects.
+
 ## 2026-09-05: GPT-6 Astra adaptation
 
 The three writing skills have been adapted using OpenAI's [GPT-6 Astra guidance](https://developers.openai.com/api/docs/guides/latest-model). The changes address instruction sensitivity and unnecessarily elaborate output while keeping the skills usable across models:

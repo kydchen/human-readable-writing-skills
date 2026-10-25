@@ -17,6 +17,10 @@
 
 `reader-first-writing` 融合了 `writing-shape` 和 `writing-beats` 的结构方法。它既能把原始材料组织成长文，也能审计一篇完整草稿。结构确认以后，它会把文档标记为 `STRUCTURE FROZEN`，再告诉用户下一步该调用哪个语言编辑技能。
 
+## 2026-10-25：检查阅读负担
+
+两个语言编辑技能现在也会检查过度压缩的表达，拆开关系不清的名词串、理顺修饰关系，并补回有助于理解的语法成分，同时保留术语和作者原意。有效的修改可以增加字数。[更新说明](docs/UPSTREAM_CHANGES.md#2026-10-25-reader-effort-update)记录了研究依据、仅涉及英语的证据范围，以及尚未验证的中文迁移和编辑效果。
+
 ## 2026-09-05：适配 GPT-6 Astra
 
 三个写作技能已根据 OpenAI 的 [GPT-6 Astra 使用指南](https://developers.openai.com/api/docs/guides/latest-model)调整指令，重点处理模型对规则更敏感时可能出现的机械修改和输出膨胀，仍可跨模型使用。

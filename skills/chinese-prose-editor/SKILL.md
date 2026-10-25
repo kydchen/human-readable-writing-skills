@@ -1,6 +1,6 @@
 ---
 name: "chinese-prose-editor"
-description: "Edit Chinese AI and technical prose into direct public writing while preserving facts, judgment, uncertainty, technical terms, and lived experience. Use for Chinese posts, essays, product notes, model reviews, and drafts that sound formulaic or lecture-like. For English, use english-prose-editor."
+description: "Edit Chinese AI and technical prose into direct public writing while preserving facts, judgment, uncertainty, technical terms, and lived experience. Use for Chinese posts, essays, product notes, model reviews, and drafts with formulaic, lecture-like, or overly compressed wording. For English, use english-prose-editor."
 license: "CC-BY-NC-4.0"
 disable-model-invocation: true
 ---
@@ -25,6 +25,25 @@ Default output is the revised text only. Add diagnosis only when the user asks w
 4. Remove structure shells before polishing words.
 5. Do not add new examples, data, quotes, or personal experience.
 6. Leave clear, accurate passages unchanged. A useful edit can be small; returning the original text is appropriate when it already meets the request.
+
+## Reader effort and compression
+
+Make the relationships in a sentence easy for the intended reader to follow. A useful revision may be longer. Keep words such as `仅在`、`可能`、`与……相关` when they carry scope or uncertainty. Do not optimize for a word count or an AI-detector score.
+
+- Unpack noun chains when readers have to guess how the parts relate. Use ordinary verbs and phrases such as `对……`、`在……时`、`用于……` to express relationships already supported by the source. Do not infer a causal link merely to make the prose flow.
+- Reorder a long modifier, nested `的` phrase, or interrupted main clause when it is hard to connect the actor, action, and object. Split only where the meaning allows, keeping conditions and qualifications attached to the claims they limit.
+- Restore a subject, noun, or connective only when the intended reader would otherwise lose the reference or relationship. Chinese can omit a recoverable subject naturally. Do not impose an explicit subject on every sentence.
+- Prefer familiar wording when a coined label, unusual word pairing, or personification obscures an action. Preserve established terms such as `社会认同理论` and accurate technical statements such as `服务器缓存响应`.
+
+Before:
+
+> 我们完成了新用户注册失败原因分析。
+
+After:
+
+> 我们已分析完新用户注册失败的原因。
+
+Keep a clear long sentence, a conventional technical expression, or an accurate passive such as `记录已删除`. Do not invent who deleted the records. These Chinese checks are editorial adaptations of English-language research, not findings established for Chinese.
 
 ## Editorial patterns and explicit preferences
 
@@ -258,7 +277,7 @@ Better:
    - judgment: what the author believes after testing
    - experience: specific usage, failure, cost, workflow, or tradeoff
    - action: what the reader can do or avoid
-3. Delete empty framing before rewriting:
+3. Resolve unclear relationships and compressed syntax, then remove empty framing. Keep connective words that carry a real logical relationship. Remove only empty uses of:
    - platform boilerplate
    - AI disclaimer language
    - lecture setup
@@ -266,7 +285,7 @@ Better:
    - short imperative hooks such as `别急着...先...` or `顺序别反了`
    - conclusion that repeats the previous paragraph
 4. Choose paragraphing for the target surface. For X/Twitter, default to 3-5 short paragraphs. In longer writing, start a new paragraph when the claim, evidence, speaker, or angle changes. Split sentences or paragraphs that carry several independent jobs, but do not enforce shortness mechanically.
-5. Run one final check for fidelity, clarity, and the relevant patterns below. Correct concrete problems in the affected passages, then deliver. Do not repeat full rewrites just to eliminate every listed string.
+5. Run one final check for fidelity, reader effort, and the relevant patterns below. Check that the reader can follow the action, references, and relationships without reconstructing omitted information. Correct concrete problems in the affected passages, then deliver. Do not repeat full rewrites just to eliminate every listed string.
 
 ## Style Rules
 
@@ -312,12 +331,15 @@ Use these cues to inspect the final text in context:
 - empty focus shifts such as `更值得盯的是个人`
 - mannered phrasing or a metaphor anywhere in the draft that hides concrete information
 - an unclear referent for `这条` / `这篇` / `这个`, considering both the passage and whether it will be read or heard
+- a noun chain, nested modifier, or omitted subject or connective that makes the intended relationship hard to follow
 - a long sentence or paragraph carrying several independent claims, evidence moves, or changes of angle
 - source wording presented as unmarked paraphrase, or a direct quotation changed without authorization
 
 Revise only confirmed clarity or voice problems and violations of the user's explicit preferences. Preserve necessary meaning, clear references, direct quotations, and technical terms. Default to the revised text only, without a score, preliminary draft, or unsolicited diagnostic report.
 
 ## Attribution
+
+The 2026-10-25 reader-effort update draws editorial ideas from Clark, Martin, and Mahowald's [Why is AI-generated language so hard to understand?](https://arxiv.org/abs/2610.29162v1). The study analyzes English only. The Chinese rules are adaptations to inspect in context, not validated Chinese effects or an authorship test. Evidence limits and adaptation decisions are recorded in `docs/UPSTREAM_CHANGES.md` in the source repository.
 
 The 2026-09-05 adaptation, informed by OpenAI's [GPT-6 Astra guidance](https://developers.openai.com/api/docs/guides/latest-model), makes pattern inspection contextual while preserving explicit user preferences and source meaning. It remains model-independent; the adaptation is documented in `docs/UPSTREAM_CHANGES.md` in the source repository.
 

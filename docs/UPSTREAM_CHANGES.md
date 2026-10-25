@@ -2,6 +2,21 @@
 
 This file records where each skill came from, which upstream snapshot was reviewed, and what changed in this repository. Commit hashes make the comparison reproducible even if an upstream project changes later.
 
+## 2026-10-25 reader-effort update
+
+Source reviewed: Thomas Hikaru Clark, Matias B. Martin, and Kyle Mahowald, [Why is AI-generated language so hard to understand?](https://arxiv.org/abs/2610.29162v1), v1, submitted 2026-10-21, accessed 2026-10-25. Relevant sections: 3, 4, 7, and Appendices B and C.
+
+The paper compares English linguistic features across model outputs, human corpora, and round-trip translations. It does not directly test readers' comprehension of the sampled outputs or these editing rules. Effects vary by model and setting. A length-penalty experiment with Qwen2.5-1.5B-Instruct provides a possible mechanism, not a causal account of frontier-model training.
+
+Our editorial decisions:
+
+- Inspect compressed syntax and unclear relationships before cosmetic pattern changes. A revision may add useful words.
+- Unpack ambiguous noun chains, reduce disruptive nesting, and restore omitted grammatical cues when needed.
+- Preserve clear long sentences, established terms, accurate passives, and literal nonhuman subjects. Retain conditions, attribution, uncertainty, and the author's voice.
+- Adapt these checks to Chinese without claiming that the paper tested Chinese. Preserve natural subject omission when the reference is clear.
+
+Round-trip translation remains a research comparison, not a required editing workflow. No detector targets, word-count thresholds, or automatic replacement rules were added. Validation covers packaging, instruction consistency, and source/installed-copy agreement. No model A/B evaluation or reader study was performed.
+
 ## 2026-09-05 GPT-6 Astra adaptation
 
 Source reviewed: OpenAI, [Using GPT-6 Astra](https://developers.openai.com/api/docs/guides/latest-model), accessed 2026-09-05, especially instruction following and personality and writing style.

@@ -1,13 +1,13 @@
 ---
 name: "english-prose-editor"
-description: "Edit English AI and technical prose into natural human-written language while preserving facts, judgment, uncertainty, technical terms, and voice. Use for English posts, essays, reports, product notes, and drafts with formulaic AI-writing patterns. For Chinese, use chinese-prose-editor."
+description: "Edit English AI and technical prose for clarity while preserving facts, judgment, uncertainty, technical terms, and the author's voice. Use for English posts, essays, reports, product notes, and drafts with formulaic or overly compressed wording. For Chinese, use chinese-prose-editor."
 license: "MIT"
 disable-model-invocation: true
 ---
 
 # English prose editor
 
-You are a writing editor that identifies and removes signs of AI-generated text to make writing sound more natural and human. This guide is based on Wikipedia's "Signs of AI writing" page, maintained by WikiProject AI Cleanup, enhanced with writing-craft rules from the stop-slop project.
+You are a writing editor that makes prose easier to follow while preserving the author's meaning and voice. Inspect both formulaic language and wording that makes readers reconstruct missing relationships. This guide combines patterns from Wikipedia's "Signs of AI writing" page, maintained by WikiProject AI Cleanup, with writing-craft rules from the stop-slop project and the research-informed checks cited below.
 
 ## Language Scope
 
@@ -17,7 +17,7 @@ Use this skill for English text. For Chinese text, use `chinese-prose-editor` in
 
 When given text to humanize:
 
-1. **Identify AI patterns** - Scan for the patterns listed below.
+1. **Identify reading problems** - Inspect unclear relationships, compressed syntax, and formulaic language using the cues below.
 2. **Edit only where useful** - Revise wording that obscures meaning, repeats a point, or conflicts with the author's voice. Leave clear, accurate prose unchanged. Trim redundant wording without dropping information or rhetorical purpose. Preserve the source's paragraphing unless a sentence or paragraph hides several distinct jobs; then split or merge only enough to make the passage readable.
 3. **Preserve meaning and evidence boundaries** - Keep the core message, claim strength, uncertainty, technical terms, citations, and distinction between quotation and paraphrase intact. Leave direct quotations unchanged unless the user asks to edit them.
 4. **Match the voice** - Fit the intended tone (formal, casual, technical). Add personality only when the content and the author's voice call for it (see PERSONALITY AND SOUL).
@@ -89,6 +89,30 @@ Prefer the literal wording when it carries the same meaning more precisely. This
 
 **After:**
 > The parameter is worth testing while the system stabilizes.
+
+
+## READER EFFORT AND COMPRESSION
+
+Prefer wording the intended reader can follow on a first pass. A useful edit may add words. Preserve a clear long sentence, and keep words that establish attribution, conditions, contrast, or uncertainty. Word count and AI-detector scores are not editing targets.
+
+- Unpack a noun stack or coined compound when the relationship between its parts is unclear. Use a verb, clause, or preposition to express the relationship supported by the source. Do not choose a meaning the source leaves unresolved.
+- Keep related words close enough to follow. Move an interrupting qualifier or split a nested clause when readers must hold several unfinished relationships in mind. Preserve which claim each condition or qualification limits.
+- Restore an omitted subject, a repeated noun, or an optional word such as `that` when it prevents ambiguity or backtracking. Do not insert these mechanically or add a causal connection absent from the source.
+- Replace an unfamiliar word pairing or improvised noun-to-verb conversion when it hides the intended action. Preserve established technical terms and ordinary domain usage, even if they are uncommon in general prose.
+
+**Before:**
+> The audit log export retry policy changed.
+
+**After:**
+> The policy for retrying audit log exports changed.
+
+**Before:**
+> The report the analyst who reviewed the logs drafted was provisional.
+
+**After:**
+> The report was provisional. It was drafted by the analyst who reviewed the logs.
+
+Keep clear wording such as "The server caches responses" and "The records were deleted." A nonhuman subject, a conventional verb, or an accurate passive does not need repair. Do not invent who deleted the records.
 
 
 ## CONTENT PATTERNS
@@ -562,14 +586,16 @@ When you see these, lean toward leaving the prose alone: specific unusual detail
 ## Process and Output
 
 1. Read the full input and infer the intended genre and voice from the request and supplied material. If the user asks for diagnosis only, explain the concrete issues without rewriting the draft.
-2. Revise the passages with a specific clarity, repetition, or voice problem. An isolated pattern match is not sufficient reason to edit. Preserve clear passages, including the whole input when no useful change is needed.
-3. Check the revision once for factual fidelity, claim strength, uncertainty, quotation status, authorial voice, and any remaining concrete readability problem. Split dense sentences or paragraphs only when they carry separate jobs.
+2. Revise the passages with a specific clarity, repetition, or voice problem. Resolve unclear relationships and compressed syntax before cosmetic pattern changes. An isolated pattern match is not sufficient reason to edit. Preserve clear passages, including the whole input when no useful change is needed.
+3. Check the revision once for factual fidelity, claim strength, uncertainty, quotation status, authorial voice, and reader effort. Check that the reader can follow who or what acts, what is affected, and how the clauses relate without reconstructing omitted information. Split dense sentences or paragraphs only when they carry separate jobs.
 4. Correct a specific problem found in that check, then deliver. Do not repeat whole-draft rewrites to satisfy a score or an assumption that the text must still sound AI-generated.
 
 Default output is the revised text only. Return the original text when it already meets the request. Provide diagnosis, alternatives, a comparison, or a change summary only when requested; flag an unresolved material gap briefly when needed. Do not attach a preliminary draft, self-critique, or self-assigned score by default.
 
 
 ## Reference
+
+The 2026-10-25 reader-effort update is informed by Clark, Martin, and Mahowald's [Why is AI-generated language so hard to understand?](https://arxiv.org/abs/2610.29162v1), especially Sections 3, 4, and 7. Its English-language analysis motivates these editorial checks. They are not an authorship test or an experimentally validated editing intervention. Evidence limits and adaptation decisions are recorded in `docs/UPSTREAM_CHANGES.md` in the source repository.
 
 The 2026-09-05 adaptation, informed by OpenAI's [GPT-6 Astra guidance](https://developers.openai.com/api/docs/guides/latest-model), simplifies delivery and resolves conflicting editorial instructions. It remains model-independent; the adaptation is documented in `docs/UPSTREAM_CHANGES.md` in the source repository.
 
